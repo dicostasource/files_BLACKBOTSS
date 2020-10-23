@@ -75,13 +75,13 @@ end
 local msg = data.message_
 text = msg.content_.text_
 if text then 
-if (text:match("(الغاء حظر اسم) (.*)") and is_mod(msg)) then 
+if (text:match("(الغاء حظر اسم) (.*)") and Owner(msg)) then 
 e = {string.match(text, "^(الغاء حظر اسم) (.*)$")}
 send(msg.chat_id_, msg.id_, 1, "🔘┇ تم الغاء حظر {"..e[2].."}", 1, 'html')
 database:srem("tshake:block:name:"..bot_id..msg.chat_id_,e[2])
 return "tshake"
 end
-if (text:match("(حظر اسم) (.*)") and is_mod(msg)) then 
+if (text:match("(حظر اسم) (.*)") and Owner(msg)) then 
 e = {string.match(text, "^(حظر اسم) (.*)$")}
 send(msg.chat_id_, msg.id_, 1, "☑️┇ تم حظر {"..e[2].."}", 1, 'html')
 database:sadd("tshake:block:name:"..bot_id..msg.chat_id_,e[2])
@@ -90,7 +90,7 @@ if ((text == "مسح الاسماء المحظوره" or text == "حذف الا�
 database:del("tshake:block:name:"..bot_id..msg.chat_id_)
 send(msg.chat_id_, msg.id_, 1, "🗳┇تم المسح بنجاح", 1, 'html')
 end
-if ((text == "الاسماء المحظوره" or text == "قائمه الاسماء المحظوره") and is_mod(msg)) then 
+if ((text == "الاسماء المحظوره" or text == "قائمه الاسماء المحظوره") and Owner(msg)) then 
 names_tshake = database:smembers("tshake:block:name:"..bot_id..msg.chat_id_)
 if (names_tshake and names_tshake[1] and #names_tshake ~= 0) then 
 text_tshake = "⚠┇قائمة الاسماء الممنوعه ،\n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ \n"
@@ -102,7 +102,7 @@ else
 send(msg.chat_id_, msg.id_, 1, "🗳┇لا يوجد اسماء محظوره", 1, 'html')
 end
 end
-if (text == "تفعيل طرد الاسم" and is_mod(msg)) then 
+if (text == "تفعيل طرد الاسم" and Owner(msg)) then 
 send(msg.chat_id_, msg.id_, 1, "☑️┇تم التفعيل سيتم طرد العضو الذي يضع الاسماء المحظوره", 1, 'html')
 database:set("tshake:block:name:stats:"..bot_id..msg.chat_id_,"tshake_block")
 end
