@@ -2,11 +2,11 @@ local function TagAd(msg)
 local text = msg.content_.text_
 if text and text == "تفعيل تاك الادمنيه" and Owner(msg) then 
 database:set(bot_id.."BLACKBOTSS:Tag:Admins:"..msg.chat_id_,true)
-send(msg.chat_id_, msg.id_,"⚠️┇تم تفعيل تاك الادمنيه")
+send(msg.chat_id_, msg.id_,"⌔︙تم تفعيل تاك الادمنيه")
 end
 if text and text == "تعطيل تاك الادمنيه" and Owner(msg) then 
 database:del(bot_id.."BLACKBOTSS:Tag:Admins:"..msg.chat_id_)
-send(msg.chat_id_, msg.id_, "⚠️┇تم تعطيل تاك الادمنيه")
+send(msg.chat_id_, msg.id_, "⌔︙تم تعطيل تاك الادمنيه")
 end
 
 if text == 'صيح الادمنيه' or text == "تاك للادمنيه" or text == "وين الادمنيه" then
@@ -18,7 +18,7 @@ User_id = "@"..b.username_
 else
 User_id = msg.sender_user_id_
 end
-local t = "\n⚠️┇المستخدم ~ ["..User_id .."] يصيح الادمنيه \n\n"
+local t = "\n⌔︙المستخدم ~ ["..User_id .."] يصيح الادمنيه \n\n"
 k = 0
 for i,v in pairs(data.members_) do
 if bot_id ~= v.user_id_ then 
